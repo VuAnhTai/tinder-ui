@@ -11,7 +11,7 @@ export class Header extends Component {
           <PersonIcon className={styles.header_icon}></PersonIcon>
         </IconButton>
         <IconButton>
-          <img className={styles.header_logo} src="logo.svg"></img>
+          <img className={styles.header_logo} src="/logo.svg"></img>
         </IconButton>
         <IconButton className={styles.header_logo}>
           <ForumIcon></ForumIcon>

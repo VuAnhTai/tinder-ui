@@ -32,19 +32,19 @@ function SwipeButtons() {
   return (
     <div className={styles.swipeButtons}>
       <IconButton className={repeat}>
-        <Replay font-size="large"></Replay>
+        <Replay fontSize="large"></Replay>
       </IconButton>
       <IconButton className={left}>
-        <CloseIcon font-size="large"></CloseIcon>
+        <CloseIcon fontSize="large"></CloseIcon>
       </IconButton>
       <IconButton className={star}>
-        <StarIcon font-size="large"></StarIcon>
+        <StarIcon fontSize="large"></StarIcon>
       </IconButton>
       <IconButton className={right}>
-        <FavoriteIcon font-size="large"></FavoriteIcon>
+        <FavoriteIcon fontSize="large"></FavoriteIcon>
       </IconButton>
       <IconButton className={lightning}>
-        <FlashOnIcon font-size="large"></FlashOnIcon>
+        <FlashOnIcon fontSize="large"></FlashOnIcon>
       </IconButton>
     </div>
   )
