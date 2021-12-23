@@ -21,11 +21,8 @@ function Header(props:any) {
         </IconButton>)
       }
       <Link href="/">
-        <img className={styles.header_logo} src="/logo.svg"></img>
-      </Link>
-      <Link href="/chat">
-        <IconButton className={styles.header_logo}>
-          <ForumIcon></ForumIcon>
+        <IconButton>
+          <img className={styles.header_logo} src="/logo.svg"></img>
         </IconButton>
       </Link>
     </div>

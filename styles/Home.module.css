@@ -108,6 +108,19 @@
   margin-left: 0.5rem;
 }
 
+.app {
+  display: flex;
+}
+.contentRight {
+  width: 75%;
+  height: 100vh;
+  background-color: #f0f2f4;
+}
+.contentLeft {
+  width: 25%;
+  height: 100vh;
+}
+
 @media (max-width: 600px) {
   .grid {
     width: 100%;

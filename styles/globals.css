@@ -17,3 +17,10 @@ a {
   text-decoration: none;
 }
 
+.MuiTabs-indicator {
+  background-color: #fd267a!important;
+}
+
+.MuiBox-root {
+  padding: 5px;
+}
