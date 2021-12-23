@@ -8,7 +8,12 @@ import { IconButton } from '@mui/material';
 import React from 'react'
 import styles from "./style.module.scss";
 
-function SwipeButtons() {
+interface propsButton {
+  clickRight: any,
+  clickLeft: any
+}
+
+function SwipeButtons({clickRight, clickLeft}:propsButton) {
   const repeat = classnames({
     [styles.repeat]: true,
     [styles.button]: true
@@ -34,13 +39,13 @@ function SwipeButtons() {
       <IconButton className={repeat}>
         <Replay fontSize="large"></Replay>
       </IconButton>
-      <IconButton className={left}>
+      <IconButton className={left} onClick={clickLeft}>
         <CloseIcon fontSize="large"></CloseIcon>
       </IconButton>
       <IconButton className={star}>
         <StarIcon fontSize="large"></StarIcon>
       </IconButton>
-      <IconButton className={right}>
+      <IconButton className={right} onClick={clickRight}>
         <FavoriteIcon fontSize="large"></FavoriteIcon>
       </IconButton>
       <IconButton className={lightning}>
