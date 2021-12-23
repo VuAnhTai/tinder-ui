@@ -11,7 +11,7 @@ function UserCards({users}:propsUserCards) {
   const router = useRouter()
   const handleClick = ( user:any) => (e:React.SyntheticEvent) => {
     e.preventDefault()
-    router.push(`/chat/${user.name}`)
+    router.push(`/chat`)
   }
 
   return (

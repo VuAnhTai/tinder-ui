@@ -4,6 +4,7 @@ import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import UserCards from '../../components/UserCards'
+import UserMessages from '../../components/UserMessages'
 function a11yProps(index:number) {
   return {
     id: `simple-tab-${index}`,
@@ -59,6 +60,15 @@ function SideBar() {
   ,{"name":"Jeff Bezos","url":"https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Jeff_Bezos_at_Amazon_Spheres_Grand_Opening_in_Seattle_-_2018_%2839074799225%29_%28cropped%29.jpg/800px-Jeff_Bezos_at_Amazon_Spheres_Grand_Opening_in_Seattle_-_2018_%2839074799225%29_%28cropped%29.jpg"},{"name":"Elon musk","url":"https://upload.wikimedia.org/wikipedia/commons/8/85/Elon_Musk_Royal_Society_%28crop1%29.jpg"}
   ,{"name":"Jeff Bezos","url":"https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Jeff_Bezos_at_Amazon_Spheres_Grand_Opening_in_Seattle_-_2018_%2839074799225%29_%28cropped%29.jpg/800px-Jeff_Bezos_at_Amazon_Spheres_Grand_Opening_in_Seattle_-_2018_%2839074799225%29_%28cropped%29.jpg"},{"name":"Elon musk","url":"https://upload.wikimedia.org/wikipedia/commons/8/85/Elon_Musk_Royal_Society_%28crop1%29.jpg"}
   ,{"name":"Jeff Bezos","url":"https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Jeff_Bezos_at_Amazon_Spheres_Grand_Opening_in_Seattle_-_2018_%2839074799225%29_%28cropped%29.jpg/800px-Jeff_Bezos_at_Amazon_Spheres_Grand_Opening_in_Seattle_-_2018_%2839074799225%29_%28cropped%29.jpg"},{"name":"Elon musk","url":"https://upload.wikimedia.org/wikipedia/commons/8/85/Elon_Musk_Royal_Society_%28crop1%29.jpg"}]
+  
+  const userMessages = [
+    {"name": "Jeff Bezos", "url":"https://upload.wikimedia.org/wikipedia/commons/8/85/Elon_Musk_Royal_Society_%28crop1%29.jpg", "message": "Hello word"},
+    {"name": "Jeff Bezos", "url":"https://upload.wikimedia.org/wikipedia/commons/8/85/Elon_Musk_Royal_Society_%28crop1%29.jpg", "message": "Hello word"},
+    {"name": "Jeff Bezos", "url":"https://upload.wikimedia.org/wikipedia/commons/8/85/Elon_Musk_Royal_Society_%28crop1%29.jpg", "message": "Hello word"},
+    {"name": "Jeff Bezos", "url":"https://upload.wikimedia.org/wikipedia/commons/8/85/Elon_Musk_Royal_Society_%28crop1%29.jpg", "message": "Hello word"},
+    {"name": "Jeff Bezos", "url":"https://upload.wikimedia.org/wikipedia/commons/8/85/Elon_Musk_Royal_Society_%28crop1%29.jpg", "message": "Hello word"},
+    {"name": "Jeff Bezos", "url":"https://upload.wikimedia.org/wikipedia/commons/8/85/Elon_Musk_Royal_Society_%28crop1%29.jpg", "message": "Hello word"},
+  ]
   return (
     <>
       <Box sx={{ width: '100%' }}>
@@ -76,7 +86,7 @@ function SideBar() {
           <UserCards users={users}></UserCards>
         </TabPanel>
         <TabPanel value={value} index={2}>
-          Item Three
+          <UserMessages userMessages={userMessages} />
         </TabPanel>
       </Box>
     </>
