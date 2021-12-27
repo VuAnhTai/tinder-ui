@@ -4,8 +4,9 @@ import SwipeButtons from '../../components/SwipeButtons'
 
 import { getUsers } from '../../api/user'
 
-function BodyTinder() {
+function BodyTinder({fetchDataAgain}:any) {
   const [users, setPeople] = useState([] as any)
+  const [actions, setActions] = useState([] as any)
   const childRef = useRef() as any;
 
   useEffect(() => {
@@ -14,7 +15,8 @@ function BodyTinder() {
 
   const fetchData = async () => {
     const { data } : any = await getUsers()
-    setPeople(data || [])
+    setActions([...data.actions] || [])
+    setPeople([...data.users] || [])
   }
 
   const clickRight = () => {
@@ -27,8 +29,8 @@ function BodyTinder() {
 
   return (
     <>
-      <TinderCards ref={childRef} users={users} ></TinderCards>
-      <SwipeButtons clickRight={clickRight} clickLeft={clickLeft}></SwipeButtons>
+      <TinderCards ref={childRef} users={users} actions={actions} fetchDataAgain={fetchDataAgain}></TinderCards>
+      <SwipeButtons clickRight={clickRight} clickLeft={clickLeft} clickReload={fetchData}></SwipeButtons>
     </>
   )
 }

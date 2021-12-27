@@ -10,10 +10,11 @@ import styles from "./style.module.scss";
 
 interface propsButton {
   clickRight: any,
-  clickLeft: any
+  clickLeft: any,
+  clickReload: any,
 }
 
-function SwipeButtons({clickRight, clickLeft}:propsButton) {
+function SwipeButtons({clickRight, clickLeft, clickReload}:propsButton) {
   const repeat = classnames({
     [styles.repeat]: true,
     [styles.button]: true
@@ -36,7 +37,7 @@ function SwipeButtons({clickRight, clickLeft}:propsButton) {
   })
   return (
     <div className={styles.swipeButtons}>
-      <IconButton className={repeat}>
+      <IconButton className={repeat} onClick={clickReload}>
         <Replay fontSize="large"></Replay>
       </IconButton>
       <IconButton className={left} onClick={clickLeft}>

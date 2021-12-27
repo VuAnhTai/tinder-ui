@@ -18,9 +18,17 @@ a {
 }
 
 .MuiTabs-indicator {
-  background-color: #fd267a!important;
+  background-color: #fd267a;
 }
 
 .MuiBox-root {
   padding: 5px;
+}
+
+.MuiPaper-root {
+  border-radius: 20px;
+  position: absolute;
+  top: 10vh;
+  right: 20%;
+  max-width: 650px
 }

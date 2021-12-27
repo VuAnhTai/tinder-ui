@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useImperativeHandle, forwardRef } from 'react'
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
@@ -43,7 +43,7 @@ const tabStyle = {
   }
 };
 
-function SideBar() {
+function SideBar(props:any, ref:any) {
   const [value, setValue] = React.useState(0);
   const [userMatches, setUserMatches] = React.useState([]);
   const [userLiked, setUserLiked] = React.useState([]);
@@ -54,7 +54,16 @@ function SideBar() {
   useEffect(() => {
     fetchDataLiked()
     fetchDataMatches()
-}, []);
+  }, []);
+
+  useImperativeHandle(ref, () => ({
+    fetchData
+  }))
+
+  const fetchData =  async() => {
+    fetchDataLiked()
+    fetchDataMatches()
+  }
 
   const getStyle = (isActive:any) => {
     return isActive ? tabStyle.active_tab : tabStyle.default_tab
@@ -107,4 +116,4 @@ function SideBar() {
   )
 }
 
-export default SideBar
+export default forwardRef(SideBar)

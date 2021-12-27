@@ -3,26 +3,38 @@ import styles from "./style.module.scss";
 import TinderCard from 'react-tinder-card'
 import { userLike, userPass } from '../../api/user'
 
-import axios from 'axios';
-
+import Dialog from '@mui/material/Dialog';
 interface propsInterface {
   users: any[],
+  actions: any[],
+  fetchDataAgain: any,
 }
 
-function TinderCards({ users }: propsInterface, ref:any) {
+function TinderCards({ users, actions, fetchDataAgain }: propsInterface, ref:any) {
   const [currentIndex, setCurrentIndex] = useState(0)
+  const [open, setOpen] = React.useState(false);
+  const [currentUser, setCurrentUser] = React.useState(users[0]);
   useEffect(() => {
     setCurrentIndex(users.length - 1)
+    setCurrentUser(users[0])
   }, [users])
 
   const currentIndexRef = useRef(currentIndex)
   const canSwipe = currentIndex >= 0
 
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   const childRefs = useMemo(
     () =>
       Array(users.length)
         .fill(0)
-        .map((i) => React.createRef()),
+        .map(() => React.createRef()),
     [users]
   ) as any
 
@@ -32,7 +44,15 @@ function TinderCards({ users }: propsInterface, ref:any) {
   }
 
   const liked = async (data:any) => {
-    userLike(data)
+    const action = actions.find(action => action.user_uuid === data.user_action_uuid)
+    if (action) {
+      handleOpen()
+    }
+
+    await userLike(data)
+    if (action) {
+      fetchDataAgain()
+    }
   }
   const pass = async (data:any) => {
     userPass(data)
@@ -40,7 +60,8 @@ function TinderCards({ users }: propsInterface, ref:any) {
   // set last direction and decrease current index
   const swiped = (direction:any, user:any, index:any) => {
     updateCurrentIndex(index - 1)
-    console.log(user)
+    setCurrentUser(user)
+
     const dataSend = {
       user_uuid: '',
       user_action_uuid: user.uuid
@@ -70,29 +91,54 @@ function TinderCards({ users }: propsInterface, ref:any) {
 
   return (
     <div className={styles.tinderCard}>
-      <div className={styles.tinderCard__container}>
-      {
-        users.map((user:any, index:number) => (
-          <TinderCard
-            ref={childRefs[index]}
-            className={styles.swipe}
-            key={index}
-            preventSwipe={["up", "down"]}
-            onSwipe={(dir: any) => swiped(dir, user, index)}
-            onCardLeftScreen={() => outOfFrame(user.name)}
-          >
-            <div
-              style={{backgroundImage: `url(${user.url})`}}
-              className={styles.card}
-            >
-              <h3>{ user.name }</h3>
-            </div>
-          </TinderCard>
-        ))
-      }
-      </div>
+        <div className={styles.tinderCard__container}>
+          {
+            users.map((user:any, index:number) => (
+              <TinderCard
+                ref={childRefs[index]}
+                className={styles.swipe}
+                key={index}
+                preventSwipe={["up", "down"]}
+                onSwipe={(dir: any) => swiped(dir, user, index)}
+                onCardLeftScreen={() => outOfFrame(user.name)}
+              >
+                <div
+                  style={{backgroundImage: `url(${user.url})`}}
+                  className={styles.card}
+                >
+                  <h3>{ user.name }</h3>
+                </div>
+              </TinderCard>
+            ))
+          }
+        </div>
+        <SimpleDialog
+          open={open}
+          onClose={handleClose}
+          user={currentUser || {}}
+          className={styles.dialog}
+        />
     </div>
   )
 }
+
+function SimpleDialog(props:any) {
+  const { onClose, open, user } = props;
+  const handleClose = () => {
+    onClose();
+  };
+
+  return (
+    <Dialog onClose={handleClose} open={open} className={styles.dialog}>
+      <div
+        style={{backgroundImage: `url(${user.url})`}}
+        className={styles.card}
+      >
+        <h3>{ user.name }</h3>
+      </div>
+    </Dialog>
+  );
+}
+
 
 export default forwardRef(TinderCards)

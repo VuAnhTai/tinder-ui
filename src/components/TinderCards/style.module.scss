@@ -1,4 +1,5 @@
-.tinderCard {
+.tinderCard, .dialog {
+  border-radius: 20px;
   &__container {
     display: flex;
     justify-content: center;
@@ -24,5 +25,27 @@
   }
   .swipe {
     position: absolute;
+  }
+}
+
+.dialog {
+  border-radius: 20px;
+  .card {
+    width: 650px;
+    height: 60vh;
+    &::before {
+      content: 'MATCH !!!';
+      font-size: 68px;
+      font-weight: 900;
+      color: #70d894;
+      padding: 0 20px;
+      border: 10px solid #70d894;
+      transform: rotate(20deg);
+      -ms-transform: rotate(20deg);
+      position: relative;
+      border-radius: 10px;
+      top: 20vh;
+      left: 15%;
+    }
   }
 }
