@@ -15,7 +15,7 @@ function ChatScreen() {
       message: 'Hows it going',
     },
     {
-      message: 'Hi! HOw are you Ellen!',
+      message: 'Hi! How are you Ellen!',
     }
   ])
   return (

@@ -1,15 +1,16 @@
 import request from '../utils/request'
+const API_USER = process.env.NEXT_PUBLIC_API_USER
 
 export function getUsersMatches() {
   return request({
-    url: 'http://localhost:9030/user/matches',
+    url: `${API_USER}/user/matches`,
     method: 'get'
   })
 }
 
 export function getUsersLiked() {
   return request({
-    url: 'http://localhost:9030/user/liked',
+    url: `${API_USER}/user/liked`,
     method: 'get'
   })
 }

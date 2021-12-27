@@ -7,7 +7,7 @@ const service = axios.create({
 
 service.interceptors.request.use(
   config => {
-    config.headers['user_uuid'] = '2c43be3d-800e-4b58-a5f8-a9ffca403844'
+    config.headers['user_uuid'] = '64dca5b8-8a1a-4132-a9ff-0abcad066ac4'
     return config
   },
   error => {

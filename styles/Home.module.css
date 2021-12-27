@@ -124,6 +124,7 @@
 .contentRight {
   height: 100vh;
   width: 75%;
+  background-color: lightgray;
 }
 
 @media (max-width: 600px) {
