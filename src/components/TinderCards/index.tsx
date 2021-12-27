@@ -50,9 +50,7 @@ function TinderCards({ users, actions, fetchDataAgain }: propsInterface, ref:any
     }
 
     await userLike(data)
-    if (action) {
-      fetchDataAgain()
-    }
+    fetchDataAgain()
   }
   const pass = async (data:any) => {
     userPass(data)

@@ -9,9 +9,12 @@ interface propsUserCards {
 
 function UserCards({users}:propsUserCards) {
   const router = useRouter()
-  const handleClick = ( user:any) => (e:React.SyntheticEvent) => {
+  const handleClick = (user:any) => (e:React.SyntheticEvent) => {
     e.preventDefault()
-    router.push(`/chat`)
+    router.push({
+      pathname: '/chat/[user_uuid]',
+      query: { user_uuid: user.uuid }
+    })
   }
 
   return (

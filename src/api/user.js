@@ -1,5 +1,12 @@
 import request from '../utils/request'
 
+export function getUser(user_uuid) {
+  return request({
+    url: `http://localhost:9030/user/${user_uuid}`,
+    method: 'get'
+  })
+}
+
 export function getUsers() {
   return request({
     url: 'http://localhost:9030/user',
