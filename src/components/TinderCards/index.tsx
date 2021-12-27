@@ -1,6 +1,9 @@
 import React, { useEffect, useState, useMemo, useRef, forwardRef, useImperativeHandle } from 'react'
 import styles from "./style.module.scss";
 import TinderCard from 'react-tinder-card'
+import { userLike, userPass } from '../../api/user'
+
+import axios from 'axios';
 
 interface propsInterface {
   users: any[],
@@ -28,9 +31,27 @@ function TinderCards({ users }: propsInterface, ref:any) {
     currentIndexRef.current = val
   }
 
+  const liked = async (data:any) => {
+    userLike(data)
+  }
+  const pass = async (data:any) => {
+    userPass(data)
+  }
   // set last direction and decrease current index
-  const swiped = (direction:any, nameToDelete:any, index:any) => {
+  const swiped = (direction:any, user:any, index:any) => {
     updateCurrentIndex(index - 1)
+    console.log(user)
+    const dataSend = {
+      user_uuid: '',
+      user_action_uuid: user.uuid
+    };
+    if (direction === 'right') {
+      liked(dataSend)
+    }
+
+    if (direction === 'left') {
+      pass(dataSend)
+    }
   }
 
   const outOfFrame = (name: string) => {
@@ -39,7 +60,7 @@ function TinderCards({ users }: propsInterface, ref:any) {
 
   const swipe = async (dir:any) => {
     if (canSwipe && currentIndex < users.length) {
-      console.log(childRefs[currentIndex].current.swipe(dir))
+      // console.log(childRefs[currentIndex].current.swipe(dir))
       await childRefs[currentIndex].current.swipe(dir) // Swipe the card!
     }
   }
@@ -57,7 +78,7 @@ function TinderCards({ users }: propsInterface, ref:any) {
             className={styles.swipe}
             key={index}
             preventSwipe={["up", "down"]}
-            onSwipe={(dir: any) => swiped(dir, user.name, index)}
+            onSwipe={(dir: any) => swiped(dir, user, index)}
             onCardLeftScreen={() => outOfFrame(user.name)}
           >
             <div
