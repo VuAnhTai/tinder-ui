@@ -23,7 +23,7 @@ function Header(props:any) {
       }
       <Link href="/" passHref>
         <IconButton>
-          <Image className={styles.header_logo} src="/logo.svg" alt="tinder"></Image>
+          <Image className={styles.header_logo} src="/logo.svg" alt="tinder" width={30} height={30}></Image>
         </IconButton>
       </Link>
     </div>
