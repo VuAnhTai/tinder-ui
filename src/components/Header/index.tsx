@@ -4,6 +4,7 @@ import { useRouter } from 'next/router'
 import styles from "./style.module.scss";
 import PersonIcon from '@mui/icons-material/Person';
 import ForumIcon from '@mui/icons-material/Forum';
+import Image from 'next/image';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import { IconButton } from '@mui/material';
 
@@ -20,9 +21,9 @@ function Header(props:any) {
           <PersonIcon className={styles.header_icon}></PersonIcon>
         </IconButton>)
       }
-      <Link href="/">
+      <Link href="/" passHref>
         <IconButton>
-          <img className={styles.header_logo} src="/logo.svg"></img>
+          <Image className={styles.header_logo} src="/logo.svg" alt="tinder"></Image>
         </IconButton>
       </Link>
     </div>

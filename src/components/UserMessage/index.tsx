@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from './style.module.scss'
+import Image from 'next/image';
 interface propsUserMessage {
   userMessage: any,
 }
@@ -8,7 +9,7 @@ interface propsUserMessage {
 function UserMessage({userMessage}:propsUserMessage) {
   return (
     <div className={styles.box}>
-      <img src={userMessage.url}></img>
+      <Image src={userMessage.url} alt="chat"></Image>
       <div className={styles.content}>
         <h3>{userMessage.name}</h3>
         <p>{userMessage.message}</p>
